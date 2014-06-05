@@ -1,0 +1,22 @@
+<table>
+
+<span style = "font-family:helvetica;font-size:14pt;"><em>Starting Balance:</em> <%=@starting_balance%></span><br>
+<span style = "font-family:helvetica;font-size:14pt;"><em>Ending Balance:</em> <%=@current_balance%></span>
+
+<th>
+  <tr style="background:rgba(0,230,100,.9);color:white;">
+    <td style = "padding:15px;margin:10px;">Amount</td>
+    <td style = "padding:15px;margin:10px;">Type</td>
+    <td style = "padding:15px;margin:10px;">Date</td>
+    <td style = "padding:15px;margin:10px;">Description</td>
+  </tr>
+</th>
+  <tb><%  @transactions.each_with_index do |trans, index|%>
+    <tr <%= "style = \"background:rgba(0,0,230,.1);\"" if index % 2 == 1 %>>
+      <td style = "padding:15px;margin:10px;"><%=sprintf( "%.2f", trans["Amount"].to_f)%></td>
+      <td style = "padding:15px;margin:10px;"><%=trans["type"]%></td>
+      <td style = "padding:15px;margin:10px;"><%=trans["Date"]%></td>
+      <td style = "padding:15px;margin:10px;"><%=trans["Description"]%></td>
+    </tr>
+  <% end %></tb>
+</table>

@@ -1,0 +1,22 @@
+<table>
+<th>
+  <tr style="background:rgba(0,230,100,.9);color:white;">
+    <td style = "padding:15px;margin:10px;">Account Name</td>
+    <td style = "padding:15px;margin:10px;">Starting Balance</td>
+    <td style = "padding:15px;margin:10px;">Ending Balance</td>
+    <td style = "padding:15px;margin:10px;">First Transaction Date</td>
+    <td style = "padding:15px;margin:10px;">Last Transaction Date</td>
+  </tr>
+</th>
+  <tb><%  @accounts.each_with_index do |account,index|%>
+    <tr <%= "style = \"background:rgba(0,0,230,.1);\"" if index % 2 == 1 %>>
+      <td style = "padding:15px;margin:10px;">
+        <a href = "/accounts/<%= account["name"].gsub(" ","+") %>"><%=account["name"]%></a>
+        </td>
+      <td style = "padding:15px;margin:10px;"><%=sprintf( "%.2f", account["start"].to_f)%></td>
+      <td style = "padding:15px;margin:10px;"><%=sprintf( "%.2f", account["current"].to_f)%></td>
+      <td style = "padding:15px;margin:10px;"><%=account["first_trans"]%></td>
+      <td style = "padding:15px;margin:10px;"><%=account["last_trans"]%></td>
+    </tr>
+  <% end %></tb>
+</table>
